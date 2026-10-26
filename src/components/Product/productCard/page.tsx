@@ -1,9 +1,7 @@
 "use client"
 
 import { ProductModel } from '@/domain/productModel'
-import React from 'react'
-import { useToast } from '@/context/toastContext'
-import { useCart } from '@/context/cartContext' 
+import useAddToCart from '@/hooks/useAddToCart'
 
 
 
@@ -12,9 +10,7 @@ export interface productCardProps {
 }
 
 function ProductCard(productProps: productCardProps) {
-    const [loading, setLoading] = React.useState(false);
-    const { showToast } = useToast();
-    const { addToCart } = useCart();
+    const { addToCart, loading } = useAddToCart();
 
     const imagePath = `/images/products/${productProps.product.image}`;
     const finalPrice =
@@ -22,56 +18,9 @@ function ProductCard(productProps: productCardProps) {
         (productProps.product.price * (productProps.product.discount * 0.01));
 
     async function onClickAddToCard() {
-
-        setLoading(true);
-        let result = { success: false };
-        try {
-
-            result = await fakeApi();
-            if (result.success)
-                handleAddToCart(productProps.product.id);
-        }
-        catch (e) {
-            console.log("500: server failed");
-
-        }
-        finally {
-            setLoading(false);
-            handleToast(result.success);
-        }
-
-
+        addToCart(productProps.product.id);
     }
 
-    function handleAddToCart(productId: number) {
-        addToCart(productId);
-    }
-
-    async function handleToast(isSuccess: boolean) {
-        if (isSuccess) {
-            showToast(
-                {
-                    id: Date.now(),
-                    message: "product added"
-                });
-        }
-        else {
-            showToast(
-                {
-                    id: Date.now(),
-                    message: "Failed to add product to cart"
-                });
-        }
-    }
-
-    async function fakeApi() {
-        return new Promise<{ success: boolean }>((resolve, rejected) => {
-            setTimeout(() => {
-                resolve({ success: true });
-                //rejected({ success: false });
-            }, 2000);
-        });
-    }
 
     return (
         <div className='card'>

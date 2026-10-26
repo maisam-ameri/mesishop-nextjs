@@ -16,3 +16,11 @@
         grid-template-columns: 1fr;
     }
 }
+
+.addToCartButton{
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    background-color: blue;
+    color: aliceblue;
+}

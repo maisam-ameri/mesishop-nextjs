@@ -1,6 +1,8 @@
+
 import { GetProductById } from "@/services/productService";
 import { notFound } from "next/navigation";
 import styles from "./page.module.css";
+import AddProductToCart from "./addToCart";
 
 type props = {
     params: Promise<{ id: number }>;
@@ -27,17 +29,18 @@ export default async function ProductDetails({ params }: props) {
             />
             <div>
                 <h1>{product.title}</h1>
-                {product.outOfStock ?
-                    <p>Out of stock</p>
-                    :
-                    product.discount > 0 ?
-                        <>
+                {product.outOfStock
+                    ? <p>Out of stock</p>
+                    : product.discount > 0
+                        ? <>
                             <del>{product.price}$</del>
                             <p>{product.discount}% OFF </p>
                             <p>{orginalPrice}$ </p>
+                            <AddProductToCart  id={product.id} />
                         </>
                         : <p>{product.price}$ </p>
                 }
+
             </div>
 
         </div>
