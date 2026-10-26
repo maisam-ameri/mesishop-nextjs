@@ -1,11 +1,15 @@
 "use client"
+import { useAuth } from "@/context/authContext";
 import { useToast } from "@/context/toastContext";
 import { Login as loginApi } from "@/services/authService"
+import { useRouter } from "next/navigation";
 import React from "react";
 
 export default function Login() {
     const [loading, setLoading] = React.useState(false);
+    const { setUser } = useAuth();
     const { showToast } = useToast();
+    const router = useRouter();
 
 
     async function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
@@ -15,13 +19,19 @@ export default function Login() {
         const formData = new FormData(event.currentTarget);
         const email = formData.get("email");
         const password = formData.get("password");
+
         let result = { success: false };
 
         if (typeof email !== "string" || typeof password !== "string") return;
 
         try {
             result = await loginApi({ email, password });
-            console.log(result);
+            
+            if (result.success) {
+                setUser({ email });
+                router.push("/");
+
+            }
             showToast(
                 {
                     id: 0,
@@ -38,6 +48,7 @@ export default function Login() {
         }
         finally {
             setLoading(false);
+
         }
     }
 
