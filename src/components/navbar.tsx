@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useCart } from "@/context/cartContext";
 import { usePathname } from "next/navigation";
+import { useAuth } from "@/context/authContext";
 
 const navRoutes = [
     { title: "Mesi Shop", href: "/" },
@@ -15,6 +16,7 @@ const navRoutes = [
 export default function Navbar() {
     const { totalItems } = useCart();
     const pathName = usePathname();
+    const {user} = useAuth();
 
     function createNavItem(title: string, href: string) {
         const cartLinkClass = href === "/cart" ? "cart-link" : "";
@@ -40,7 +42,9 @@ export default function Navbar() {
             </div>
             <div className="navbar-item">
 
-                {createNavItem("Login", "/login")}
+                {user 
+                ? createNavItem(user.email, "/profile")  
+                : createNavItem("Login", "/login")}
                 {createNavItem("Cart", "/cart")}
             </div>
         </nav>
