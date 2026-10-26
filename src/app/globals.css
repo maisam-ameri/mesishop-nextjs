@@ -104,6 +104,11 @@ main {
 
 }
 
+.outOfStock {
+  color: rgb(220, 55, 55);
+  font-weight: bold;
+}
+
 .product-info {
 
   display: flex;

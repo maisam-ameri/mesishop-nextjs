@@ -30,14 +30,15 @@ export default async function ProductDetails({ params }: props) {
             <div>
                 <h1>{product.title}</h1>
                 {product.outOfStock
-                    ? <p>Out of stock</p>
+                    ? <p  className="outOfStock">Out of stock</p>
                     : product.discount > 0
-                        ? <>
-                            <del>{product.price}$</del>
-                            <p>{product.discount}% OFF </p>
-                            <p>{orginalPrice}$ </p>
-                        </>
-                        : <p>{product.price}$ </p>
+                        ? 
+                        <div className={styles.priceContainer}>
+                            <del className={styles.oldPrice}>{product.price}$</del>
+                            <p className={styles.discount}>{product.discount}% OFF </p>
+                            <p className={styles.finalPrice}>{orginalPrice}$ </p>
+                        </div>
+                        : <p className={styles.finalPrice}>{product.price}$ </p>
                 }
                 <AddProductToCart id={product.id} outOfStock={product.outOfStock} />
 

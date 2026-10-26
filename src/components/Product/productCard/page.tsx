@@ -38,7 +38,7 @@ function ProductCard(productProps: productCardProps) {
                 </h3>
 
                 {productProps.product.outOfStock ?
-                    (<p>Out of stock</p>)
+                    (<p className='outOfStock'>Out of stock</p>)
                     : (
                         <div className='price'>
                             {productProps.product.discount !== 0 ? (
