@@ -62,15 +62,6 @@ export default function CartSummary() {
         }
     }
 
-    // async function fakeApi() {
-    //     return new Promise<{ success: boolean }>((resolve, rejected) => {
-    //         setTimeout(() => {
-    //             resolve({ success: true });
-    //             //rejected({ success: false });
-    //         }, 2000);
-    //     });
-    // }
-
 
     return (cartState.length > 0 &&
         <div className="cart-summary">
@@ -81,7 +72,7 @@ export default function CartSummary() {
                 <span> {calculateTotalCart()}$</span>
             </div>
             <button onClick={handleCheckout}   
-            className={loading ? "cart-summary-checkout-disabled" : "cart-summary-checkout"}>
+            className="cart-summary-checkout-button" disabled = {loading}>
                 Checkout</button>
         </div >)
 

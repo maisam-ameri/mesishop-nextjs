@@ -309,7 +309,7 @@ button:disabled {
   font-weight: 600;
 }
 
-.cart-summary-checkout {
+.cart-summary-checkout-button {
   width: 100%;
   padding: 12px 16px;
   border: none;
@@ -322,22 +322,13 @@ button:disabled {
   transition: opacity 0.2s ease;
 }
 
-.cart-summary-checkout-disabled {
-  width: 100%;
-  padding: 12px 16px;
-  border: none;
-  border-radius: 8px;
-  background: var(--foreground);
-  color: var(--background);
-  font-size: 15px;
-  font-weight: 600;
-  cursor: none;
-  transition: opacity 0.2s ease;
-  opacity: 0.2;
-  pointer-events: none;
+.cart-summary-checkout-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
-.cart-summary-checkout:hover {
+
+.cart-summary-checkout-button:hover {
   opacity: 0.85;
 }
 
