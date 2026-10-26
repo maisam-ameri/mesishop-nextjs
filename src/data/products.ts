@@ -18,7 +18,7 @@ export const products: ProductModel[] = [
     image: "2.png",
     price: 1200000,
     discount: 0,
-    outOfStock: false,
+    outOfStock: true,
     createdAt: "2026-09-30",
     salesCount: 98,
   },

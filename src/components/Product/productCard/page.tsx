@@ -2,6 +2,7 @@
 
 import { ProductModel } from '@/domain/productModel'
 import useAddToCart from '@/hooks/useAddToCart'
+import Link from "next/link";
 
 
 
@@ -17,19 +18,27 @@ function ProductCard(productProps: productCardProps) {
         productProps.product.price -
         (productProps.product.price * (productProps.product.discount * 0.01));
 
-    async function onClickAddToCard() {
+
+    function onClickAddToCard() {
         addToCart(productProps.product.id);
     }
 
 
     return (
         <div className='card'>
-            <img src={imagePath} alt={productProps.product.title}></img>
+            <Link href={`/products/${productProps.product.id}`}>
+                <img src={imagePath} alt={productProps.product.title}></img>
+            </Link>
+
             <div className='product-info'>
-                <h3>{productProps.product.title}</h3>
+                <h3>
+                    <Link href={`/products/${productProps.product.id}`}>
+                        {productProps.product.title}
+                    </Link>
+                </h3>
 
                 {productProps.product.outOfStock ?
-                    (<p>na mojood</p>)
+                    (<p>Out of stock</p>)
                     : (
                         <div className='price'>
                             {productProps.product.discount !== 0 ? (
@@ -54,7 +63,11 @@ function ProductCard(productProps: productCardProps) {
                         </div>
                     )}
 
-                <button onClick={onClickAddToCard} disabled={loading}>{loading ? "loading..." : "Add to card"}</button>
+                <button
+                    onClick={onClickAddToCard}
+                    disabled={loading || productProps.product.outOfStock}>
+                    {loading ? "loading..." : "Add to card"}
+                </button>
 
             </div>
         </div>

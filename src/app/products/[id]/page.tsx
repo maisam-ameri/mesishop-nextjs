@@ -36,10 +36,10 @@ export default async function ProductDetails({ params }: props) {
                             <del>{product.price}$</del>
                             <p>{product.discount}% OFF </p>
                             <p>{orginalPrice}$ </p>
-                            <AddProductToCart  id={product.id} />
                         </>
                         : <p>{product.price}$ </p>
                 }
+                <AddProductToCart id={product.id} outOfStock={product.outOfStock} />
 
             </div>
 

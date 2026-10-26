@@ -101,7 +101,7 @@ main {
   margin: 0 auto;
   padding: 20px;
   box-sizing: border-box;
-  
+
 }
 
 .product-info {
@@ -137,7 +137,7 @@ main {
   background-color: #70cb60;
 }
 
-.product-info button:disabled {
+button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
@@ -304,8 +304,7 @@ main {
   align-items: center;
   gap: 12px;
   padding: 16px 0;
-  border-top: 1px solid
-    color-mix(in srgb, var(--foreground) 15%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 15%, transparent);
   font-size: 15px;
   font-weight: 600;
 }
