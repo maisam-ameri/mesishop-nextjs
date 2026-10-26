@@ -37,7 +37,7 @@ export default function useProducts() {
         const params = new URLSearchParams(searchParams.toString());
 
         params.delete("page");
-        
+
         if (value.trim()) {
             params.set(filter, value);
             if (filter === "sortBy" && !searchParams.get("sortOrder")) {
