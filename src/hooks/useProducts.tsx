@@ -9,7 +9,6 @@ import React from "react";
 
 export default function useProducts() {
 
-
     const router = useRouter();
     const searchParams = useSearchParams();
 
@@ -21,7 +20,6 @@ export default function useProducts() {
     const sortByParam = searchParams.get("sortBy");
     const sortOrderParam = searchParams.get("sortOrder");
     const pageParam = searchParams.get("page");
-
     const productFilter: ProductFilter = {
         keyword: searchParams.get("keyword") ?? undefined,
         brand: searchParams.get("brand") ?? undefined,
@@ -38,6 +36,8 @@ export default function useProducts() {
 
         const params = new URLSearchParams(searchParams.toString());
 
+        params.delete("page");
+        
         if (value.trim()) {
             params.set(filter, value);
             if (filter === "sortBy" && !searchParams.get("sortOrder")) {
@@ -81,8 +81,8 @@ export default function useProducts() {
             params.delete("sortOrder");
             params.delete("sortBy");
         }
-        if(productFilter.sortBy && !productFilter.sortOrder){
-            params.set("sortOrder","asc");
+        if (productFilter.sortBy && !productFilter.sortOrder) {
+            params.set("sortOrder", "asc");
 
         }
         if (pageParam) {
