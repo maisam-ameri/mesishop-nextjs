@@ -6,8 +6,13 @@ import React from "react";
 
 
 export default function Profile() {
-    const { user } = useAuth();
+    const { user, setUser } = useAuth();
     const router = useRouter();
+
+    function handleLogout() {
+        setUser(null);
+        router.push("/login");
+    }
 
     React.useEffect(() => {
 
@@ -17,8 +22,18 @@ export default function Profile() {
     }, [user, router])
 
     if (!user) return null;
-    
+
     return (
-        <h1>Hello {user.email}</h1>
+        <div>
+
+            <h1>Hello {user.email}</h1>
+            <button
+                onClick={handleLogout}
+                className="btn btn-danger"
+                >
+                    
+                Logout</button>
+
+        </div>
     )
 }
