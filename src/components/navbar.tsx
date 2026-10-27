@@ -38,7 +38,7 @@ export default function Navbar() {
             <div className="navbar-item">
 
                 {createNavItem("Products", "/products")}
-                {createNavItem("AboutUs", "/about")}
+                {createNavItem("AboutUs", "/aboutus")}
             </div>
             <div className="navbar-item">
 
