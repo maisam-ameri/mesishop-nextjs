@@ -205,12 +205,28 @@ button:disabled {
 
 .navbar {
   display: flex;
-  background-color: #20252D;
-  justify-content: space-between;
   align-items: center;
-  padding: 30px 25px;
-  border-bottom: 1px solid #536176;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 16px 32px;
+  background: #171717;
+  border-bottom: 1px solid #333;
+}
 
+.navbar-brand,
+.navbar-links,
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.navbar-links {
+  justify-content: center;
+}
+
+.navbar-actions {
+  justify-content: flex-end;
 }
 
 .navbar a {
