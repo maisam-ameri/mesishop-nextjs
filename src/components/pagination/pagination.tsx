@@ -21,9 +21,10 @@ export default function Pagination(paginationModel: PaginationProps) {
             indexes.map(index => {
                 return (
                     <button
-                        className={index == page ? "active" : ""}
+                        className={index === page ? "btn btn-primary" : "btn"}
                         key={index}
                         onClick={() => onClick(index)}
+                        disabled = {index === page}
                     >{index}</button>
                 )
             })
@@ -78,13 +79,16 @@ export default function Pagination(paginationModel: PaginationProps) {
     return (
         <div className="pagination">
 
-            <button disabled={page <= 1} onClick={() => onClick(page !== 0 ? page - 1 : page)}>
+            <button 
+            className="btn btn-outline"
+            disabled={page <= 1} 
+            onClick={() => onClick(page !== 0 ? page - 1 : page)}>
                 Prev
             </button>
 
             {prevContinue &&
                 <>
-                    <button onClick={() => onClick(1)}>
+                    <button className="btn" onClick={() => onClick(1)}>
                         {1}
                     </button>
                     <span>...</span>
@@ -95,12 +99,15 @@ export default function Pagination(paginationModel: PaginationProps) {
             {nextContinue &&
                 <>
                     <span>...</span>
-                    <button onClick={() => onClick(totalPages)}>
+                    <button className="btn" onClick={() => onClick(totalPages)}>
                         {totalPages}
                     </button>
                 </>
             }
-            <button disabled={page === totalPages} onClick={() => onClick(page < totalPages ? page + 1 : page)}>
+            <button 
+            className="btn btn-outline"
+            disabled={page === totalPages} 
+            onClick={() => onClick(page < totalPages ? page + 1 : page)}>
                 Next
             </button>
 

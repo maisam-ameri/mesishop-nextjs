@@ -19,7 +19,7 @@ export default function AddProductToCart({ id, outOfStock }: AddToCartProps) {
         <button
             onClick={handleAddToCart}
             disabled={loading || outOfStock}
-            className={styles.addToCartButton}
+            className={`btn btn-success ${styles.addToCartButton}`} 
         >
             {loading ? "loading" : "Add to cart"}
         </button>

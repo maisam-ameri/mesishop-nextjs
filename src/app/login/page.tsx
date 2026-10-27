@@ -82,7 +82,7 @@ export default function Login() {
                     />
                 </div>
                 <button
-                    className={styles.submitButton}
+                    className= "btn btn-primary"
                     disabled={loading}
                     type="submit">
                     {loading ? "Logging in ..." : "Login"}

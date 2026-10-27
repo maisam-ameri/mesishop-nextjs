@@ -71,9 +71,11 @@ export default function CartSummary() {
                 <span>total</span>
                 <span> {calculateTotalCart()}$</span>
             </div>
-            <button onClick={handleCheckout}   
-            className="cart-summary-checkout-button" disabled = {loading}>
-                Checkout</button>
+            <button
+                onClick={handleCheckout}
+                className="btn btn-success" disabled={loading}
+            >
+                {loading ? "Loading" : "Checkout"}</button>
         </div >)
 
 }

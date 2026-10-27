@@ -65,8 +65,11 @@ function ProductCard(productProps: productCardProps) {
 
                 <button
                     onClick={onClickAddToCard}
-                    disabled={loading || productProps.product.outOfStock}>
+                    disabled={loading || productProps.product.outOfStock}
+                    className='btn btn-success'
+                    >
                     {loading ? "loading..." : "Add to card"}
+                    
                 </button>
 
             </div>

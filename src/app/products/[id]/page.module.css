@@ -14,14 +14,8 @@
 
 .addToCartButton {
     width: 100%;
-    border: none;
-    padding: 12px;
-    margin-top: 16px;
-    border-radius: 4px;
-    background-color: #4d9e3e;
-    ;
-    color: aliceblue;
-    cursor: pointer;
+    padding: 10px;
+    margin-top: 30px;
 }
 
 .productDetails h1 {

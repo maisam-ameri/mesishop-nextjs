@@ -53,13 +53,17 @@ export function CartContainer() {
                     </div>
                 </div>
                 <div className="cart-item-quantity">
-                    <button onClick={() => decreaseQuantity(cartModel.productId)}>-</button>
+                    <button 
+                    className='btn btn-outline'
+                    onClick={() => decreaseQuantity(cartModel.productId)}>-</button>
                     <span>{cartModel.quantity}</span>
-                    <button onClick={() => addToCart(cartModel.productId)}>+</button>
+                    <button 
+                    className='btn btn-outline'
+                    onClick={() => addToCart(cartModel.productId)}>+</button>
                 </div>
 
                 <button
-                    className="cart-item-remove"
+                    className="btn btn-danger"
                     onClick={() => removeFromCart(cartModel.productId)}
                 >
                     Remove
