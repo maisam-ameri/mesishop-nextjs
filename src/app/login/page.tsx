@@ -4,6 +4,7 @@ import { useToast } from "@/context/toastContext";
 import { Login as loginApi } from "@/services/authService"
 import { useRouter } from "next/navigation";
 import React from "react";
+import styles from "./page.module.css"
 
 export default function Login() {
     const [loading, setLoading] = React.useState(false);
@@ -54,32 +55,34 @@ export default function Login() {
 
 
     return (
-        <div>
+        <div className={styles.container}>
 
-            <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
+            <h1 className={styles.title}>Login</h1>
+            <form onSubmit={handleSubmit} className={styles.form}>
                 <div>
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email" className={styles.field}>Email</label>
                     <input
                         id="email"
                         name="email"
                         type="email"
                         autoComplete="email"
                         required
+                        className={styles.input}
                     />
                 </div>
                 <div>
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password" className={styles.field}>Password</label>
                     <input
                         id="password"
                         name="password"
                         type="password"
                         autoComplete="current-password"
                         required
+                        className={styles.input}
                     />
                 </div>
                 <button
-                    className="submit-button"
+                    className={styles.submitButton}
                     disabled={loading}
                     type="submit">
                     {loading ? "Logging in ..." : "Login"}
